@@ -1,0 +1,118 @@
+:root {
+	--text: #fff;
+	--bg: #333;
+	--bg: #000;
+
+	--sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+	font: 18px/145% var(--sans);
+	letter-spacing: 0.18px;
+	color-scheme: light dark;
+	color: var(--text);
+	background: var(--bg);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	@media (max-width: 1024px) {
+		font-size: 16px;
+	}
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+
+	display: grid;
+
+	place-items: center;
+}
+
+// ////////////////////////////////////////////////////////////////////
+
+#numbers {
+	--offset: 300px;
+	--gap: 000px;
+
+	width: 80vw;
+
+	display: grid;
+
+	grid-template-columns: repeat(6, 1fr);
+	gap: 2px;
+
+	--col: 0;
+	--row: 0;
+
+	&[number='2'] {
+		--col: 1;
+		--row: 0;
+	}
+	&[number='3'] {
+		--col: 2;
+		--row: 0;
+	}
+	&[number='4'] {
+		--col: 0;
+		--row: 1;
+	}
+	&[number='5'] {
+		--col: 1;
+		--row: 1;
+	}
+	&[number='6'] {
+		--col: 2;
+		--row: 1;
+	}
+	&[number='7'] {
+		--col: 0;
+		--row: 2;
+	}
+	&[number='8'] {
+		--col: 1;
+		--row: 2;
+	}
+	&[number='9'] {
+		--col: 2;
+		--row: 2;
+	}
+	&[number='0'] {
+		--col: 0;
+		--row: 3;
+	}
+
+	.window {
+		aspect-ratio: 1;
+
+		background-color: #fff;
+
+		background-image: url(./assets/numbers.png);
+		background-size: 300% 400%;
+		background-position: calc(0% + (var(--col) * 50%)) calc(0% + (var(--row) * 33.333%));
+		// background-position: 50% 0%;
+
+		background-repeat: no-repeat;
+
+        will-change: background-position;
+        transition: background-position 200ms ease;
+
+		// &.hero {
+		// 	// border: 1px solid magenta;
+		// 	background-size: 600% 800%;
+
+		// 	&:nth-child(1 of .window.hero) {
+		// 		background-position: 0% 0%;
+		// 	}
+		// 	&:nth-child(2 of .window.hero) {
+		// 		background-position: 20% 0%;
+		// 	}
+		// 	&:nth-child(3 of .window.hero) {
+		// 		background-position: 0% 16.666%;
+		// 	}
+		// 	&:nth-child(4 of .window.hero) {
+		// 		background-position: 20% 16.666%;
+		// 	}
+		// }
+	}
+}
