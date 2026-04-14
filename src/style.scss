@@ -32,54 +32,124 @@ body {
 // ////////////////////////////////////////////////////////////////////
 
 #numbers {
-	--offset: 300px;
-	--gap: 000px;
+	--offset: 11.111111%;
+	--gap: 0px;
 
-	width: 80vw;
+	width: 80vmin;
 
 	display: grid;
 
 	grid-template-columns: repeat(6, 1fr);
 	gap: 2px;
 
-	--col: 0;
-	--row: 0;
+	[sector='tl'] {
+		background-image: url(./assets/numbers-tl.png);
+	}
 
+	[sector='tr'] {
+		background-image: url(./assets/numbers-tr.png);
+	}
+
+	&[number='0'] {
+		[sector='tl'] {
+			--col: 0;
+			--row: 0;
+		}
+		[sector='tr'] {
+			--col: 9;
+			--row: 0;
+		}
+	}
+
+	&[number='1'] {
+		[sector='tl'] {
+			--col: 1;
+			--row: 1;
+		}
+		[sector='tr'] {
+			--col: 8;
+			--row: 1;
+		}
+	}
 	&[number='2'] {
-		--col: 1;
-		--row: 0;
+		[sector='tl'] {
+			--col: 2;
+			--row: 2;
+		}
+		[sector='tr'] {
+			--col: 7;
+			--row: 2;
+		}
 	}
 	&[number='3'] {
-		--col: 2;
-		--row: 0;
+		[sector='tl'] {
+			--col: 3;
+			--row: 3;
+		}
+		[sector='tr'] {
+			--col: 6;
+			--row: 3;
+		}
 	}
 	&[number='4'] {
-		--col: 0;
-		--row: 1;
+		[sector='tl'] {
+			--col: 4;
+			--row: 4;
+		}
+		[sector='tr'] {
+			--col: 5;
+			--row: 4;
+		}
 	}
 	&[number='5'] {
-		--col: 1;
-		--row: 1;
+		[sector='tl'] {
+			--col: 5;
+			--row: 5;
+		}
+		[sector='tr'] {
+			--col: 4;
+			--row: 5;
+		}
 	}
 	&[number='6'] {
-		--col: 2;
-		--row: 1;
+		[sector='tl'] {
+			--col: 6;
+			--row: 6;
+		}
+		[sector='tr'] {
+			--col: 3;
+			--row: 6;
+		}
 	}
 	&[number='7'] {
-		--col: 0;
-		--row: 2;
+		[sector='tl'] {
+			--col: 7;
+			--row: 7;
+		}
+		[sector='tr'] {
+			--col: 2;
+			--row: 7;
+		}
 	}
 	&[number='8'] {
-		--col: 1;
-		--row: 2;
+		[sector='tl'] {
+			--col: 8;
+			--row: 8;
+		}
+		[sector='tr'] {
+			--col: 1;
+			--row: 8;
+		}
 	}
 	&[number='9'] {
-		--col: 2;
-		--row: 2;
-	}
-	&[number='0'] {
-		--col: 0;
-		--row: 3;
+		[sector='tl'] {
+			--col: 9;
+			--row: 9;
+		}
+		[sector='tr'] {
+			--col: 0;
+			--row: 9;
+		}
 	}
 
 	.window {
@@ -87,15 +157,14 @@ body {
 
 		background-color: #fff;
 
-		background-image: url(./assets/numbers.png);
-		background-size: 300% 400%;
-		background-position: calc(0% + (var(--col) * 50%)) calc(0% + (var(--row) * 33.333%));
+		background-size: 1000% 1000%;
+		background-position: calc(0% + (var(--col) * var(--offset))) calc(0% + (var(--row) * var(--offset)));
 		// background-position: 50% 0%;
 
 		background-repeat: no-repeat;
 
-        will-change: background-position;
-        transition: background-position 200ms ease;
+		will-change: background-position;
+		transition: background-position 500ms ease;
 
 		// &.hero {
 		// 	// border: 1px solid magenta;
