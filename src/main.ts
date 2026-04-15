@@ -9,6 +9,8 @@ function init() {
 
 	if (!numbers) return;
 
+	// -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> ->
+
 	let targetValue = 0;
 
 	setInterval(() => {
