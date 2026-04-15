@@ -32,7 +32,9 @@ body {
 // ////////////////////////////////////////////////////////////////////
 
 #numbers {
-	--offset: 11.111111%;
+	--totalcols: 10;
+
+	--offset: calc(100% / (var(--totalcols) - 1));
 	--gap: 0px;
 
 	width: 80vmin;
@@ -40,7 +42,7 @@ body {
 	display: grid;
 
 	grid-template-columns: repeat(6, 1fr);
-	gap: 2px;
+	gap: 20px;
 
 	[sector='tl'] {
 		background-image: url(./assets/numbers-tl.png);
@@ -112,7 +114,7 @@ body {
 			--col: 8;
 			--row: 8;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 1;
 			--row: 8;
 		}
@@ -130,7 +132,7 @@ body {
 			--col: 7;
 			--row: 7;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 2;
 			--row: 7;
 		}
@@ -148,7 +150,7 @@ body {
 			--col: 6;
 			--row: 6;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 3;
 			--row: 6;
 		}
@@ -166,7 +168,7 @@ body {
 			--col: 5;
 			--row: 5;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 4;
 			--row: 5;
 		}
@@ -184,7 +186,7 @@ body {
 			--col: 4;
 			--row: 4;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 5;
 			--row: 4;
 		}
@@ -202,7 +204,7 @@ body {
 			--col: 3;
 			--row: 3;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 6;
 			--row: 3;
 		}
@@ -220,7 +222,7 @@ body {
 			--col: 2;
 			--row: 2;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 7;
 			--row: 2;
 		}
@@ -238,7 +240,7 @@ body {
 			--col: 1;
 			--row: 1;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 8;
 			--row: 1;
 		}
@@ -256,7 +258,7 @@ body {
 			--col: 0;
 			--row: 0;
 		}
-        [sector='bl'] {
+		[sector='bl'] {
 			--col: 9;
 			--row: 0;
 		}
@@ -267,9 +269,8 @@ body {
 
 		background-color: #fff;
 
-		background-size: 1000% 1000%;
+		background-size: calc(var(--totalcols) * 100%);
 		background-position: calc(0% + (var(--col) * var(--offset))) calc(0% + (var(--row) * var(--offset)));
-		// background-position: 50% 0%;
 
 		background-repeat: no-repeat;
 
