@@ -3,21 +3,21 @@ import './style.scss';
 console.log('bongo');
 
 function init() {
-	const numbers = document.getElementById('numbers');
+    const numbers = document.getElementById('numbers');
 
-	console.log(numbers);
+    console.log(numbers);
 
-	if (!numbers) return;
+    if (!numbers) return;
 
-	// -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> ->
+    // -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> -> ->
 
-	let targetValue = 0;
+    let targetValue = 0;
 
-	setInterval(() => {
-		targetValue = targetValue === 9 ? 0 : (targetValue += 1);
+    setInterval(() => {
+        targetValue = targetValue === 9 ? 0 : (targetValue += 1);
 
-		numbers.setAttribute('number', `${targetValue}`);
-	}, 1000);
+        numbers.setAttribute('number', `${targetValue}`);
+    }, 1000);
 }
 
 init();

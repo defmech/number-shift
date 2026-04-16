@@ -42,22 +42,38 @@ body {
 	display: grid;
 
 	grid-template-columns: repeat(6, 1fr);
-	gap: 20px;
+	gap: 0px;
 
 	[sector='tl'] {
 		background-image: url(./assets/numbers-tl.png);
+
+		&.hero {
+			background-image: url(./assets/numbers-tl-hero.png);
+		}
 	}
 
 	[sector='tr'] {
 		background-image: url(./assets/numbers-tr.png);
+
+		&.hero {
+			background-image: url(./assets/numbers-tr-hero.png);
+		}
 	}
 
 	[sector='br'] {
 		background-image: url(./assets/numbers-br.png);
+
+		&.hero {
+			background-image: url(./assets/numbers-br-hero.png);
+		}
 	}
 
 	[sector='bl'] {
 		background-image: url(./assets/numbers-bl.png);
+
+		&.hero {
+			background-image: url(./assets/numbers-bl-hero.png);
+		}
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -277,22 +293,8 @@ body {
 		will-change: background-position;
 		transition: background-position 500ms ease-in-out calc(var(--delay-scaler) * 50ms);
 
-		// &.hero {
-		// 	// border: 1px solid magenta;
-		// 	background-size: 600% 800%;
-
-		// 	&:nth-child(1 of .window.hero) {
-		// 		background-position: 0% 0%;
-		// 	}
-		// 	&:nth-child(2 of .window.hero) {
-		// 		background-position: 20% 0%;
-		// 	}
-		// 	&:nth-child(3 of .window.hero) {
-		// 		background-position: 0% 16.666%;
-		// 	}
-		// 	&:nth-child(4 of .window.hero) {
-		// 		background-position: 20% 16.666%;
-		// 	}
-		// }
+		// GPU hack
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
 	}
 }
