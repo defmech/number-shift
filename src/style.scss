@@ -1,6 +1,5 @@
 :root {
 	--text: #fff;
-	--bg: #333;
 	--bg: #000;
 
 	--sans: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -33,46 +32,19 @@ body {
 
 #numbers {
 	--totalcols: 10;
-
 	--offset: calc(100% / (var(--totalcols) - 1));
-	--gap: 0px;
 
 	width: 80vmin;
-
 	display: grid;
-
 	grid-template-columns: repeat(6, 1fr);
-	gap: 0px;
 
-	[sector='tl'] {
-		background-image: url(./assets/numbers-tl.png);
+	@each $sector in tl, tr, br, bl {
+		[sector='#{$sector}'] {
+			background-image: url('./assets/numbers-#{$sector}.png');
 
-		&.hero {
-			background-image: url(./assets/numbers-tl-hero.png);
-		}
-	}
-
-	[sector='tr'] {
-		background-image: url(./assets/numbers-tr.png);
-
-		&.hero {
-			background-image: url(./assets/numbers-tr-hero.png);
-		}
-	}
-
-	[sector='br'] {
-		background-image: url(./assets/numbers-br.png);
-
-		&.hero {
-			background-image: url(./assets/numbers-br-hero.png);
-		}
-	}
-
-	[sector='bl'] {
-		background-image: url(./assets/numbers-bl.png);
-
-		&.hero {
-			background-image: url(./assets/numbers-bl-hero.png);
+			&.hero {
+				background-image: url('./assets/numbers-#{$sector}-hero.png');
+			}
 		}
 	}
 
@@ -80,203 +52,37 @@ body {
 
 	--delay-scaler: 0;
 
-	[delay='1'] {
-		--delay-scaler: 1;
-	}
-
-	[delay='2'] {
-		--delay-scaler: 2;
-	}
-
-	[delay='3'] {
-		--delay-scaler: 3;
-	}
-
-	[delay='4'] {
-		--delay-scaler: 4;
+	@for $delay from 1 through 4 {
+		[delay='#{$delay}'] {
+			--delay-scaler: #{$delay};
+		}
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-	&[number='0'] {
-		[sector='tl'] {
-			--col: 0;
-			--row: 0;
-		}
-		[sector='tr'] {
-			--col: 9;
-			--row: 0;
-		}
-		[sector='br'] {
-			--col: 9;
-			--row: 9;
-		}
-		[sector='bl'] {
-			--col: 0;
-			--row: 9;
-		}
-	}
+	@for $number from 0 through 9 {
+		$mirrored: 9 - $number;
 
-	&[number='1'] {
-		[sector='tl'] {
-			--col: 1;
-			--row: 1;
-		}
-		[sector='tr'] {
-			--col: 8;
-			--row: 1;
-		}
-		[sector='br'] {
-			--col: 8;
-			--row: 8;
-		}
-		[sector='bl'] {
-			--col: 1;
-			--row: 8;
-		}
-	}
-	&[number='2'] {
-		[sector='tl'] {
-			--col: 2;
-			--row: 2;
-		}
-		[sector='tr'] {
-			--col: 7;
-			--row: 2;
-		}
-		[sector='br'] {
-			--col: 7;
-			--row: 7;
-		}
-		[sector='bl'] {
-			--col: 2;
-			--row: 7;
-		}
-	}
-	&[number='3'] {
-		[sector='tl'] {
-			--col: 3;
-			--row: 3;
-		}
-		[sector='tr'] {
-			--col: 6;
-			--row: 3;
-		}
-		[sector='br'] {
-			--col: 6;
-			--row: 6;
-		}
-		[sector='bl'] {
-			--col: 3;
-			--row: 6;
-		}
-	}
-	&[number='4'] {
-		[sector='tl'] {
-			--col: 4;
-			--row: 4;
-		}
-		[sector='tr'] {
-			--col: 5;
-			--row: 4;
-		}
-		[sector='br'] {
-			--col: 5;
-			--row: 5;
-		}
-		[sector='bl'] {
-			--col: 4;
-			--row: 5;
-		}
-	}
-	&[number='5'] {
-		[sector='tl'] {
-			--col: 5;
-			--row: 5;
-		}
-		[sector='tr'] {
-			--col: 4;
-			--row: 5;
-		}
-		[sector='br'] {
-			--col: 4;
-			--row: 4;
-		}
-		[sector='bl'] {
-			--col: 5;
-			--row: 4;
-		}
-	}
-	&[number='6'] {
-		[sector='tl'] {
-			--col: 6;
-			--row: 6;
-		}
-		[sector='tr'] {
-			--col: 3;
-			--row: 6;
-		}
-		[sector='br'] {
-			--col: 3;
-			--row: 3;
-		}
-		[sector='bl'] {
-			--col: 6;
-			--row: 3;
-		}
-	}
-	&[number='7'] {
-		[sector='tl'] {
-			--col: 7;
-			--row: 7;
-		}
-		[sector='tr'] {
-			--col: 2;
-			--row: 7;
-		}
-		[sector='br'] {
-			--col: 2;
-			--row: 2;
-		}
-		[sector='bl'] {
-			--col: 7;
-			--row: 2;
-		}
-	}
-	&[number='8'] {
-		[sector='tl'] {
-			--col: 8;
-			--row: 8;
-		}
-		[sector='tr'] {
-			--col: 1;
-			--row: 8;
-		}
-		[sector='br'] {
-			--col: 1;
-			--row: 1;
-		}
-		[sector='bl'] {
-			--col: 8;
-			--row: 1;
-		}
-	}
-	&[number='9'] {
-		[sector='tl'] {
-			--col: 9;
-			--row: 9;
-		}
-		[sector='tr'] {
-			--col: 0;
-			--row: 9;
-		}
-		[sector='br'] {
-			--col: 0;
-			--row: 0;
-		}
-		[sector='bl'] {
-			--col: 9;
-			--row: 0;
+		&[number='#{$number}'] {
+			[sector='tl'] {
+				--col: #{$number};
+				--row: #{$number};
+			}
+
+			[sector='tr'] {
+				--col: #{$mirrored};
+				--row: #{$number};
+			}
+
+			[sector='br'] {
+				--col: #{$mirrored};
+				--row: #{$mirrored};
+			}
+
+			[sector='bl'] {
+				--col: #{$number};
+				--row: #{$mirrored};
+			}
 		}
 	}
 
@@ -287,13 +93,12 @@ body {
 
 		background-size: calc(var(--totalcols) * 100%);
 		background-position: calc(0% + (var(--col) * var(--offset))) calc(0% + (var(--row) * var(--offset)));
-
 		background-repeat: no-repeat;
 
 		will-change: background-position;
 		transition: background-position 500ms ease-in-out calc(var(--delay-scaler) * 50ms);
 
-		// GPU hack
+		// Helps this background-position animation stay smooth on some GPUs.
 		backface-visibility: hidden;
 		transform-style: preserve-3d;
 	}
